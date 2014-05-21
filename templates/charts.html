@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Log Views</title>
+        <script src="http://www.google.com/jsapi"></script>
+        <script src="http://ankane.github.io/chartkick/chartkick.js"></script>
+        <!--
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        -->
+    </head>
+    <body>
+        <h1>My First OpenSource Code Log View</h1>
+        <div class=metanav>
+            {% if not session.login_in %}
+                <a href="{{ url_for('login') }}">log in</a>
+            {% else %}
+                <a href="{{ url_for('logout') }}">log out</a>
+            {% endif %}
+        </div>
+        <hr color=red>
+   {% for i in datalist %}
+    {% if i[0] == 1 %}
+        {% line_chart i[1] with library={"title":i[2]} %}
+    {% else %}
+    {% if i[0] == 2 %}
+        {% pie_chart i[1] with library={"title":i[2]} %}
+    {% else %}
+    {% if i[0] == 3 %}
+        {% column_chart i[1] with library={"title":i[2]} %}
+    {% else %}
+    {% if i[0] == 4 %}
+        {% bar_chart i[1] with library={"title":i[2]} %}
+    {% else %}
+        {% area_chart i[1] with library={"title":i[2]} %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+ {% endfor %}
+    </body>
+</html>
