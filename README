@@ -1,1 +1,7 @@
-My First Opensource Code
+安装:
+  需要安装flask-WTF 组件
+
+使用:
+cmd.py中CMD#="你的命令"
+# 代表数字，第几条命令
+你的命令 用户获取数据的命令
